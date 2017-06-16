@@ -2,12 +2,21 @@
 #file format: ref, wgt, uk2
 #Then use shiny to select 4D equipment name and automatically.
 
+kept <- 50
+
 #977 MOB: masse da 1 kg
 df_977 <- read.csv(file="WGT_Files/977_MOB.txt",
                sep="\t",
                stringsAsFactors = FALSE,
                header=TRUE,
                dec = ",")
+df_977 <- df_977[order(df_977$uk2,
+                 decreasing=TRUE),]
+df_977 <- head(df_977, 
+               kept)
+
+#consider only the first 100 masses in decreasing uncertainty, from larger to smaller
+
 
 #1604 MOB: masse da 5 kg
 df_1604 <- read.csv(file="WGT_Files/1604_MOB.txt",
@@ -15,6 +24,11 @@ df_1604 <- read.csv(file="WGT_Files/1604_MOB.txt",
                stringsAsFactors = FALSE,
                header=TRUE,
                dec = ",")
+df_1604 <- df_1604[order(df_1604$uk2,
+                       decreasing=TRUE),]
+df_1604 <- head(df_1604, 
+                kept)
+
 
 #1669 MOB: masse da 1 kg
 df_1669 <- read.csv(file="WGT_Files/1669_MOB.txt",
@@ -22,6 +36,10 @@ df_1669 <- read.csv(file="WGT_Files/1669_MOB.txt",
                stringsAsFactors = FALSE,
                header=TRUE,
                dec = ",")
+df_1669 <- df_1669[order(df_1669$uk2,
+                         decreasing=TRUE),]
+df_1669 <- head(df_1669, 
+                kept)
 
 
 # length(df$wgt)
