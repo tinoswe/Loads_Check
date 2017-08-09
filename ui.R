@@ -40,7 +40,9 @@ fluidPage(
                    
                    plotOutput("Plot", 
                               width = 1000,
-                              height = 350)
+                              height = 350, 
+                              click = "plot_click"),
+                   verbatimTextOutput("info")
 
         )
       

@@ -32,10 +32,16 @@ function(input, output, session) {
          ylim=c(1e-3*mean(df_res$ref_wgt) - 1e-3*0.5*0.015*(df_res$ref_wgt[1]),
                 1e-3*mean(df_res$ref_wgt) + 1e-3*0.5*0.015*(df_res$ref_wgt[1])),
          bty="n",
-         #axes="F",
-         xlab = "n° esperimento virtuale",
+         axes="F",
+         xlab = "",
          ylab = "Carico totale [kg]")
     
+    axis(2)
+
+    abline(h=mean(1e-3*df_res$meas_wgt),
+           col="grey",
+           lty=2)
+        
     arrows(df_res$ep_n, 
            1e-3*df_res$meas_wgt - 1e-3*df_res$meas_unc, 
            df_res$ep_n, 
@@ -59,9 +65,14 @@ function(input, output, session) {
     frac_of_tot <- round(100*nexps/(choose(n977,n1) + choose(n1604,n2) + choose(n1669,n3)),6)
     par(mar=c(0, 0, 0, 0))
     legend("topright",
-           c(paste(as.character(frac_of_tot),"%")),
+           c(paste("Fraction of virtual experiments w.r.t. total number of possibile combinations: ",as.character(frac_of_tot),"%")),
            bty="n")
     })
+  
+  output$info <- renderText({
+    #paste0("x=", input$plot_click$x, "\ny=", input$plot_click$y)
+    paste0("Approximate total weight value (from mouse click) = ", input$plot_click$y)
+  })
 
 }
 
