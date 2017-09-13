@@ -2,7 +2,7 @@
 #file format: ref, wgt, uk2
 #Then use shiny to select 4D equipment name and automatically.
 
-kept <- 50
+#kept <- 50
 
 #977 MOB: masse da 1 kg
 df_977 <- read.csv(file="WGT_Files/977_MOB.txt",
@@ -12,8 +12,8 @@ df_977 <- read.csv(file="WGT_Files/977_MOB.txt",
                dec = ",")
 df_977 <- df_977[order(df_977$uk2,
                  decreasing=TRUE),]
-df_977 <- head(df_977, 
-               kept)
+#df_977 <- head(df_977, 
+#               kept)
 
 #consider only the first 100 masses in decreasing uncertainty, from larger to smaller
 
@@ -26,8 +26,8 @@ df_1604 <- read.csv(file="WGT_Files/1604_MOB.txt",
                dec = ",")
 df_1604 <- df_1604[order(df_1604$uk2,
                        decreasing=TRUE),]
-df_1604 <- head(df_1604, 
-                kept)
+#df_1604 <- head(df_1604, 
+#                kept)
 
 
 #1669 MOB: masse da 1 kg
@@ -38,9 +38,41 @@ df_1669 <- read.csv(file="WGT_Files/1669_MOB.txt",
                dec = ",")
 df_1669 <- df_1669[order(df_1669$uk2,
                          decreasing=TRUE),]
-df_1669 <- head(df_1669, 
-                kept)
+#df_1669 <- head(df_1669, 
+#                kept)
 
+
+df_1685 <- read.csv(file="WGT_Files/1685_MOB.txt",
+                    sep="\t",
+                    stringsAsFactors = FALSE,
+                    header=TRUE,
+                    dec = ",")
+df_1685 <- df_1685[order(df_1685$uk2,
+                         decreasing=TRUE),]
+
+df_1686 <- read.csv(file="WGT_Files/1686_MOB.txt",
+                    sep="\t",
+                    stringsAsFactors = FALSE,
+                    header=TRUE,
+                    dec = ",")
+df_1686 <- df_1686[order(df_1686$uk2,
+                         decreasing=TRUE),]
+
+df_1891 <- read.csv(file="WGT_Files/1891_MOB.txt",
+                    sep="\t",
+                    stringsAsFactors = FALSE,
+                    header=TRUE,
+                    dec = ",")
+df_1891 <- df_1891[order(df_1891$uk2,
+                         decreasing=TRUE),]
+
+df_1892 <- read.csv(file="WGT_Files/1892_MOB.txt",
+                    sep="\t",
+                    stringsAsFactors = FALSE,
+                    header=TRUE,
+                    dec = ",")
+df_1892 <- df_1892[order(df_1892$uk2,
+                         decreasing=TRUE),]
 
 # length(df$wgt)
 # 
